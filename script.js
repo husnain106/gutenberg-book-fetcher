@@ -45,12 +45,33 @@ async function fetchBooks(url) {
 This function sorts out the books by their id.
 ***Parameters required:
     - books : the unsorted array of books.
+***Output:
+    - sorted_books : the sorted array of books.
 */
 function sort_by_id(books){
     //Sorts the books array by the id property of each book in ascending order. Save the results in sorted_books.
     sorted_books = books.sort((a, b) => a.id - b.id);
-    //Log the sorted books in the console
+    //Log the sorted books in the console and return the result
     console.log("Sorted books: ", sorted_books);
+    return sorted_books;
+    
+}
+
+
+/*
+This function changes the subjects of the books to uppercase.
+***Parameters required:
+    - books : the array of books.
+*/
+function subject_to_uppercase(books){
+    //For each book in books, map each of their subject from subjects to uppercase.
+    books = books.map(book => ({
+        ...book,
+        subjects: book.subjects.map(subject => subject.toUpperCase())
+        }));
+    //Log the result on the console and return it
+    console.log("Subjects changed to uppercase", books);
+    return books;
 }
 
 
@@ -72,10 +93,11 @@ async function main() {
     
     /*
     If all_books is not empty i.e. the data has been successfully fetched from the API.
-    THEN sort the books by ID.
+    THEN sort the books by ID and map the subjects to uppercase.
     */
     if (all_books) {
-        sort_by_id(all_books.results);
+        sorted_books = sort_by_id(all_books.results);
+        mapped_books = subject_to_uppercase(sorted_books);
     }
 }
 
