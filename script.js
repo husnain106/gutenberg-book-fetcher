@@ -42,6 +42,19 @@ async function fetchBooks(url) {
 }
 
 /*
+This function sorts out the books by their id.
+***Parameters required:
+    - books : the unsorted array of books.
+*/
+function sort_by_id(books){
+    //Sorts the books array by the id property of each book in ascending order. Save the results in sorted_books.
+    sorted_books = books.sort((a, b) => a.id - b.id);
+    //Log the sorted books in the console
+    console.log("Sorted books: ", sorted_books);
+}
+
+
+/*
 Asynchronous function called main(). This function will execute all the tasks.
 Currently this is fetching the books from the API.
 */
@@ -59,10 +72,10 @@ async function main() {
     
     /*
     If all_books is not empty i.e. the data has been successfully fetched from the API.
-    THEN log the data about the books on the console.
+    THEN sort the books by ID.
     */
     if (all_books) {
-        console.log(all_books);
+        sort_by_id(all_books.results);
     }
 }
 
