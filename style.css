@@ -1,0 +1,97 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Gutendex logo styled similar to Google */
+.logo h1 {
+    font-size: 72px;
+    font-weight: normal;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.logo h1 span {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Google-style colors for each letter of the Gutendex logo */
+.logo .g {
+    color: #4285F4;
+}
+.logo .u {
+    color: #EA4335;
+}
+.logo .t {
+    color: #FBBC05;
+}
+.logo .e {
+    color: #34A853;
+}
+.logo .n {
+    color: #EA4335;
+}
+.logo .d {
+    color: #4285F4;
+}
+.logo .x {
+    color: #FBBC05;
+}
+
+/* Search bar and button styling */
+.search-section {
+    margin: 20px 0;
+}
+
+#searchBar {
+    width: 60%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    outline: none;
+    margin-right: 10px;
+}
+
+#searchBar:focus {
+    border-color: #4285f4;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 24px;
+    background-color: #4285f4;
+    color: white;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #357ae8;
+}
+
+/* Options section with checkboxes */
+.options {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.options label {
+    font-size: 16px;
+}
