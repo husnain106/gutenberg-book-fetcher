@@ -62,6 +62,8 @@ function sort_by_id(books){
 This function changes the subjects of the books to uppercase.
 ***Parameters required:
     - books : the array of books.
+***Output:
+    - books : the array of books after the subjects of every book have been changed to uppercase
 */
 function subject_to_uppercase(books){
     //For each book in books, map each of their subject from subjects to uppercase.
@@ -74,6 +76,26 @@ function subject_to_uppercase(books){
     return books;
 }
 
+/*
+This function filters the books by the authour deceased date. This is used to ensure the author was alive in the last 200 years.
+***Parameters required:
+    - books : the array of books
+***Output:
+    - filtered_books : the array of books after it has been filtered to only include books by authors that were alive in the last 200 years.
+*/
+function filter_by_lifespan(books){
+    //Calculates the current year and saves it as a constant variable
+    const currentYear = new Date().getFullYear();
+    //create a new array filtered_books, which contains all the book in books that pass a certain test
+    filtered_books = books.filter(book => {
+        //the test for filtering the books is if the different between the death year and current is less than 200 ie if the author was alive in the last 200 years
+        return book.authors.some(author => currentYear - author.death_year <= 200);
+    });
+    //log the filtered_books array on the console
+    console.log("Filtered books: ", filtered_books);
+    //return the filtered books.
+    return filtered_books;
+}
 
 /*
 Asynchronous function called main(). This function will execute all the tasks.
@@ -93,11 +115,12 @@ async function main() {
     
     /*
     If all_books is not empty i.e. the data has been successfully fetched from the API.
-    THEN sort the books by ID and map the subjects to uppercase.
+    THEN sort the books by ID, map the subjects to uppercase and filter the books to only show books by authors alive in the last 200 years.
     */
     if (all_books) {
         sorted_books = sort_by_id(all_books.results);
         mapped_books = subject_to_uppercase(sorted_books);
+        filtered_books = filter_by_lifespan(mapped_books);
     }
 }
 
