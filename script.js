@@ -98,8 +98,55 @@ function filter_by_lifespan(books){
 }
 
 /*
+This Asynchronous function iterates through all the pages to find a specific book by a specific author.
+***Parameteres required:
+    - url : url of the first page of books.
+    - book_title : the title of the book that is being searched.
+    - author_name : the name of the author of the book being searched.
+***Output:
+    - book : the data about the book where the title and author name matches to the one being searched.
+*/
+async function find_book(url, book_title, author_name){
+    //set current URL
+    let currURL = url;
+
+    //run a while loop until all the pages have been exhausted.
+    while (currURL){
+
+        //fetch the books from the current URL.
+        let currBooks = await fetchBooks(currURL);
+        //ensure the books have been fetched.
+        if (!currBooks){
+            break;
+        }
+
+        //execute a for loop for every book on the current page of books.
+        for (let book of currBooks.results) {
+            //if book title matches then check for author match..
+            //used nested if statement so doesn't always have to do the extra step of checking author.
+            if (book.title === book_title){
+                const hasTargetAuthor = book.authors.some(author => author.name === author_name);
+                if (hasTargetAuthor){
+                    //if title and author match, then log the result on console and return it.
+                    console.log("Found the book:", book);
+                    return book;
+                }
+            }
+        }
+        //if the book not found on current page then move on to the next page.
+        currURL = currBooks.next;
+    }
+    //if book not found on any of the pages then output a suitable message and return null.
+    console.log("Book not found");
+    return null;
+}
+
+
+/*
 Asynchronous function called main(). This function will execute all the tasks.
 Currently this is fetching the books from the API.
+***No Parameters
+***No outputs
 */
 async function main() {
 
@@ -121,7 +168,14 @@ async function main() {
         sorted_books = sort_by_id(all_books.results);
         mapped_books = subject_to_uppercase(sorted_books);
         filtered_books = filter_by_lifespan(mapped_books);
+
     }
+    //wait until the asynchronous function find_book has been executed before executing next line.
+    //this function searched for a book by an author which need to be added as parameters.
+    await find_book(initialUrl, "Short Stories", "Dostoyevsky, Fyodor");
+
+    //at the end log goodbye on the console to mark the end.
+    console.log("Goodbye.");
 }
 
 
