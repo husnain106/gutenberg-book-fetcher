@@ -18,16 +18,48 @@
 
 <!-- Body of the page -->
 <body>
-    <!-- Currently the page will show the simple following message to direct the user to check the console.
-    In the instance of the optional task, this will be changed to show the output-->
-    <h1>Check the console for results!</h1>
+
+    <div class="container">
+        <!-- Gutendex logo will be styled similar to Google -->
+        <div class="logo">
+            <h1>Gutendex</h1>
+        </div>
+
+        <!-- Search bar and checkboxes -->
+        <div class="search-section">
+            <!-- Will allow the user to search for a specific book.
+            Will output all books if left blank-->
+            <input type="text" id="searchBar" placeholder="Search for a book...">
+            <button id="searchButton">Search</button>
+        </div>
+
+        <div class="options">
+            <!-- This allows the user to choose if they want the subjects to be mapped to uppercase and the filter added to their search-->
+            <label>
+                <input type="checkbox" id="uppercaseCheckbox">
+                Map Subjects to Uppercase
+            </label>
+
+            <label>
+                <input type="checkbox" id="filterCheckbox">
+                Show Books by Authors Alive in the Last 200 Years
+            </label>
+        </div>
+
+        <!-- Section for displaying search results.
+        Will display the results as hyperlinks containing the book title and author.
+        Hyperlinks will open a new page which will display all the information about the book.-->
+        <div id="results" class="results-section">
+            <!-- Search results will be dynamically inserted here -->
+        </div>
+    </div>
 
     <!-- Fetch and execute the javascript file.
     Currently this file fetches all the books from the provided url,
     sorts out the books by id ascending order,
     maps all the subjects of each book to uppercase,
     filter each book by ensuring the author was alive within the last 200 years,
-    and searches for a specific book title by a specific author.-->
+    searches for a specific book by a specific author-->
     <script src="script.js"></script>
 </body>
 </html>
