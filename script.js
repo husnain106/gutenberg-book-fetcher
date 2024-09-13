@@ -151,6 +151,13 @@ function displayBooks(books) {
     const resultsSection = document.getElementById('results');
     resultsSection.innerHTML = '';  // Clear existing content
 
+    //the number of results
+    let book_count = books.length;
+    //the div where the results counter needs to be displayed
+    const resultCounter = document.getElementById('result-counter');
+    //show the result counter on the webpage
+    resultCounter.innerHTML = ('Showing '+ book_count.toString() + ' results...');
+
     //output every book on the books array
     for (let book of books){
         //create the div element with class for styling

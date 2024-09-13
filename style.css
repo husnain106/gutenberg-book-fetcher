@@ -5,11 +5,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Ensure vertical alignment */
+    flex-direction: column;
     height: 100vh;
     margin: 0;
-    padding: 20px; /* Add padding to prevent content from touching the top */
-    box-sizing: border-box; /* Ensure padding doesn't affect total width/height */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
@@ -17,7 +17,7 @@ body {
     width: 50%;
     background-color: white;
     padding: 20px;
-    margin-top: 50px; /* Add some margin to push the content down */
+    margin-top: 50px;
 }
 
 
@@ -56,7 +56,7 @@ body {
     color: #FBBC05;
 }
 
-/* Search bar and button styling */
+/* Search bars and search button styling */
 .search-section {
     margin: 20px 0;
 }
@@ -71,7 +71,7 @@ body {
     margin-right: 10px;
 }
 
-#searchBar:focus {
+#searchBook:focus, #searchAuthor:focus {
     border-color: #4285f4;
 }
 
@@ -88,7 +88,7 @@ body {
 #searchButton:hover {
     background-color: #357ae8;
 }
-
+/* Checkbox styling */
 .options {
     margin: 20px 0;
     display: flex;
@@ -100,6 +100,7 @@ body {
     font-size: 16px;
 }
 
+/* Results display styling */
 .results-section {
     text-align: left;
     padding-top: 200px;
@@ -131,4 +132,13 @@ body {
 .result-subjects {
     font-size: 12px;
     color: #545454;
+}
+
+/* Result counter styling */
+#result-counter {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
