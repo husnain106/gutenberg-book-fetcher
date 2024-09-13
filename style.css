@@ -5,8 +5,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* Ensure vertical alignment */
     height: 100vh;
     margin: 0;
+    padding: 20px; /* Add padding to prevent content from touching the top */
+    box-sizing: border-box; /* Ensure padding doesn't affect total width/height */
 }
 
 .container {
@@ -14,7 +17,9 @@ body {
     width: 50%;
     background-color: white;
     padding: 20px;
+    margin-top: 50px; /* Add some margin to push the content down */
 }
+
 
 /* Gutendex logo styled similar to Google */
 .logo h1 {
@@ -28,7 +33,7 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-/* Google-style colors for each letter of the Gutendex logo */
+/* Google-style colors for the Gutendex logo */
 .logo .g {
     color: #4285F4;
 }
@@ -56,8 +61,8 @@ body {
     margin: 20px 0;
 }
 
-#searchBar {
-    width: 60%;
+#searchBook, #searchAuthor {
+    width: 30%;
     padding: 10px;
     font-size: 18px;
     border: 1px solid #ddd;
@@ -84,7 +89,6 @@ body {
     background-color: #357ae8;
 }
 
-/* Options section with checkboxes */
 .options {
     margin: 20px 0;
     display: flex;
@@ -94,4 +98,37 @@ body {
 
 .options label {
     font-size: 16px;
+}
+
+.results-section {
+    text-align: left;
+    padding-top: 200px;
+}
+
+#results {
+    max-height: 80vh;
+    padding-top: 20px;
+}
+
+.result-item {
+    margin-bottom: 15px;
+}
+
+.result-title {
+    font-size: 18px;
+    color: #1a0dab;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.result-author {
+    font-size: 14px;
+    color: #006621;
+    margin-bottom: 4px;
+}
+
+.result-subjects {
+    font-size: 12px;
+    color: #545454;
 }

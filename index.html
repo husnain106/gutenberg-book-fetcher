@@ -3,14 +3,11 @@
 
 <!-- meta data -->
 <head>
-    <!-- Specifies the character encoding for the document.
-    Ensures that the special characters, symbols and accents are displayed correctly-->
+    <!-- Specifies the character encoding for the document.-->
     <meta charset="UTF-8">
 
-    <!-- Sets the width of the viewport to the width of the device.
-    Ensures the page scales correctly on different devices.
-    This is in case I want to do the optional task to output everything on a webpage instead of the console-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the width of the viewport to the width of the device.-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- Title of the website. Appears in the browser's title bar or tab. -->
     <title>Gutenberg Book Fetch</title>
@@ -33,10 +30,10 @@
 
         <!-- Search bar and checkboxes -->
         <div class="search-section">
-            <!-- Will allow the user to search for a specific book.
-            Will output all books if left blank-->
-            <input type="text" id="searchBar" placeholder="Search for a book...">
-            <button id="searchButton">Search</button>
+            <!-- Will allow the user to search for a specific book.-->
+            <input type="text" id="searchBook" placeholder="Search for book title">
+            <input type="text" id="searchAuthor" placeholder = "Search for author">
+            <button id="searchButton" onclick="newsearch()">Search</button>
         </div>
 
         <div class="options">
@@ -52,20 +49,13 @@
             </label>
         </div>
 
-        <!-- Section for displaying search results.
-        Will display the results as hyperlinks containing the book title and author.
-        Hyperlinks will open a new page which will display all the information about the book.-->
+        <!-- Section for displaying search results-->
         <div id="results" class="results-section">
             <!-- Search results will be dynamically inserted here -->
         </div>
     </div>
 
-    <!-- Fetch and execute the javascript file.
-    Currently this file fetches all the books from the provided url,
-    sorts out the books by id ascending order,
-    maps all the subjects of each book to uppercase,
-    filter each book by ensuring the author was alive within the last 200 years,
-    searches for a specific book by a specific author-->
+    <!-- Fetch and execute the javascript file.-->
     <script src="script.js"></script>
 </body>
 </html>
