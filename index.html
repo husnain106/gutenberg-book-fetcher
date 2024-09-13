@@ -3,31 +3,59 @@
 
 <!-- meta data -->
 <head>
-    <!-- Specifies the character encoding for the document.
-    Ensures that the special characters, symbols and accents are displayed correctly-->
+    <!-- Specifies the character encoding for the document.-->
     <meta charset="UTF-8">
 
-    <!-- Sets the width of the viewport to the width of the device.
-    Ensures the page scales correctly on different devices.
-    This is in case I want to do the optional task to output everything on a webpage instead of the console-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the width of the viewport to the width of the device.-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- Title of the website. Appears in the browser's title bar or tab. -->
     <title>Gutenberg Book Fetch</title>
+
+    <!-- Add a cascading style sheet-->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- Body of the page -->
 <body>
-    <!-- Currently the page will show the simple following message to direct the user to check the console.
-    In the instance of the optional task, this will be changed to show the output-->
-    <h1>Check the console for results!</h1>
 
-    <!-- Fetch and execute the javascript file.
-    Currently this file fetches all the books from the provided url,
-    sorts out the books by id ascending order,
-    maps all the subjects of each book to uppercase,
-    filter each book by ensuring the author was alive within the last 200 years,
-    and searches for a specific book title by a specific author.-->
+    <div class="container">
+        <!-- Gutendex logo will be styled similar to Google -->
+        <div class="logo">
+            <h1>
+                <!-- Seperate span element for each letter, allows for indivudal styling of each letter-->
+                <span class="g">G</span><span class="u">u</span><span class="t">t</span><span class="e">e</span><span class="n">n</span><span class="d">d</span><span class="e">e</span><span class="x">x</span>
+            </h1>
+        </div>
+
+        <!-- Search bar and checkboxes -->
+        <div class="search-section">
+            <!-- Will allow the user to search for a specific book.-->
+            <input type="text" id="searchBook" placeholder="Search for book title">
+            <input type="text" id="searchAuthor" placeholder = "Search for author">
+            <button id="searchButton" onclick="newsearch()">Search</button>
+        </div>
+
+        <div class="options">
+            <!-- This allows the user to choose if they want the subjects to be mapped to uppercase and the filter added to their search-->
+            <label>
+                <input type="checkbox" id="uppercaseCheckbox">
+                Map Subjects to Uppercase
+            </label>
+
+            <label>
+                <input type="checkbox" id="filterCheckbox">
+                Show Books by Authors Alive in the Last 200 Years
+            </label>
+        </div>
+
+        <!-- Section for displaying search results-->
+        <div id="results" class="results-section">
+            <!-- Search results will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Fetch and execute the javascript file.-->
     <script src="script.js"></script>
 </body>
 </html>

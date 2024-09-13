@@ -51,8 +51,7 @@ This function sorts out the books by their id.
 function sort_by_id(books){
     //Sorts the books array by the id property of each book in ascending order. Save the results in sorted_books.
     sorted_books = books.sort((a, b) => a.id - b.id);
-    //Log the sorted books in the console and return the result
-    console.log("Sorted books: ", sorted_books);
+    //return the result
     return sorted_books;
     
 }
@@ -71,8 +70,7 @@ function subject_to_uppercase(books){
         ...book,
         subjects: book.subjects.map(subject => subject.toUpperCase())
         }));
-    //Log the result on the console and return it
-    console.log("Subjects changed to uppercase", books);
+    //return the results
     return books;
 }
 
@@ -91,8 +89,6 @@ function filter_by_lifespan(books){
         //the test for filtering the books is if the different between the death year and current is less than 200 ie if the author was alive in the last 200 years
         return book.authors.some(author => currentYear - author.death_year <= 200);
     });
-    //log the filtered_books array on the console
-    console.log("Filtered books: ", filtered_books);
     //return the filtered books.
     return filtered_books;
 }
@@ -109,6 +105,7 @@ This Asynchronous function iterates through all the pages to find a specific boo
 async function find_book(url, book_title, author_name){
     //set current URL
     let currURL = url;
+    console.log("checking");
 
     //run a while loop until all the pages have been exhausted.
     while (currURL){
@@ -122,14 +119,16 @@ async function find_book(url, book_title, author_name){
 
         //execute a for loop for every book on the current page of books.
         for (let book of currBooks.results) {
+            console.log(book.title);
             //if book title matches then check for author match..
             //used nested if statement so doesn't always have to do the extra step of checking author.
-            if (book.title === book_title){
-                const hasTargetAuthor = book.authors.some(author => author.name === author_name);
+            //puts the title and author to lower case before checking for a match
+            if (book.title.toLowerCase() === book_title.toLowerCase()){
+                const hasTargetAuthor = book.authors.some(author => author.name.toLowerCase() === author_name.toLowerCase());
                 if (hasTargetAuthor){
                     //if title and author match, then log the result on console and return it.
                     console.log("Found the book:", book);
-                    return book;
+                    return [book];
                 }
             }
         }
@@ -141,43 +140,89 @@ async function find_book(url, book_title, author_name){
     return null;
 }
 
-
+// Function to display books in Google-style search result format
 /*
-Asynchronous function called main(). This function will execute all the tasks.
-Currently this is fetching the books from the API.
-***No Parameters
-***No outputs
+This function displays all the books in a div on the html page
+***Parameters:
+    - books : the array if books needed to be shown on the webpage
 */
-async function main() {
+function displayBooks(books) {
+    //save the div where all the results of the books need to go as resultSection
+    const resultsSection = document.getElementById('results');
+    resultsSection.innerHTML = '';  // Clear existing content
 
-    // Initialise a constant variable which holds the value of the target URL for the GET request.
-    const initialUrl = 'https://gutendex.com/books/';
+    //output every book on the books array
+    for (let book of books){
+        //create the div element with class for styling
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('result-item');
 
-    /*
-    Call on function called fetchBooks to handle the procedure of fetching.
-    Wait until fetchBooks has finished executing before carrying on.
-    Save the fetched data in a variable called books.
-    */
-    let all_books = await fetchBooks(initialUrl);
-    
-    /*
-    If all_books is not empty i.e. the data has been successfully fetched from the API.
-    THEN sort the books by ID, map the subjects to uppercase and filter the books to only show books by authors alive in the last 200 years.
-    */
-    if (all_books) {
-        sorted_books = sort_by_id(all_books.results);
-        mapped_books = subject_to_uppercase(sorted_books);
-        filtered_books = filter_by_lifespan(mapped_books);
+        //add a google like link for the book which opens the book in a new page
+        //currently this page goes to the gutendex page with books details
+        const titleLink = document.createElement('a');
+        titleLink.href = `https://gutendex.com/books/${book.id}/`;
+        titleLink.classList.add('result-title');
+        titleLink.textContent = book.title;
 
-    }
-    //wait until the asynchronous function find_book has been executed before executing next line.
-    //this function searched for a book by an author which need to be added as parameters.
-    await find_book(initialUrl, "Short Stories", "Dostoyevsky, Fyodor");
+        const authorsText = document.createElement('div');
+        authorsText.classList.add('result-author');
+        authorsText.textContent = book.authors.map(author => author.name).join(', ');
 
-    //at the end log goodbye on the console to mark the end.
-    console.log("Goodbye.");
+        const subjectsText = document.createElement('div');
+        subjectsText.classList.add('result-subjects');
+        subjectsText.textContent = `Subjects: ${book.subjects.join(', ')}`;
+
+        //add the elements to the div created at the start of this iteration
+        resultItem.appendChild(titleLink);
+        resultItem.appendChild(authorsText);
+        resultItem.appendChild(subjectsText);
+
+        //add the div created at the start of this for loop to the resultSection
+        resultsSection.appendChild(resultItem);
+    };
 }
 
 
-// Run the main function.
-main();
+/*
+This asynchronous function is called when the search button is pressed from the index.html page.
+This function ensures the correct results are shown depending on the search criteria
+*/
+async function newsearch() {
+    //get values from the html page
+    const searchBook = document.getElementById('searchBook').value.trim();
+    const searchAuthor = document.getElementById('searchAuthor').value.trim();
+    const map = document.getElementById('uppercaseCheckbox').checked;
+    const filter = document.getElementById('filterCheckbox').checked;
+
+    //initial url for checking the books
+    const initialUrl = 'https://gutendex.com/books/';
+
+    //if the searchBook or searchAuthor is empty then all the books will be fetches
+    //else look for the book sepcified by title and author
+    if (searchBook === '' || searchAuthor === ''){
+        //fetch books and sort by id
+        let page = await fetchBooks(initialUrl);
+        books = sort_by_id(page.results);
+        //if mapping needed then map the subjects to uppercase
+        if (map){
+            books = subject_to_uppercase(books);
+        }
+        //if filter needed then filter
+        if (filter){
+            books = filter_by_lifespan(books);
+        }
+        //log the output for trouble shooting purposes
+        console.log("Output", books);
+        //display the fetched books on the webpage
+        displayBooks(books);
+    }else{
+        //search for the book
+        book = await find_book(initialUrl, searchBook, searchAuthor);
+        if (map){
+            book = subject_to_uppercase(book);
+        }
+        //display the book on the webpage
+        displayBooks(book);
+    }
+    
+}

@@ -1,0 +1,134 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Ensure vertical alignment */
+    height: 100vh;
+    margin: 0;
+    padding: 20px; /* Add padding to prevent content from touching the top */
+    box-sizing: border-box; /* Ensure padding doesn't affect total width/height */
+}
+
+.container {
+    text-align: center;
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    margin-top: 50px; /* Add some margin to push the content down */
+}
+
+
+/* Gutendex logo styled similar to Google */
+.logo h1 {
+    font-size: 72px;
+    font-weight: normal;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.logo h1 span {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Google-style colors for the Gutendex logo */
+.logo .g {
+    color: #4285F4;
+}
+.logo .u {
+    color: #EA4335;
+}
+.logo .t {
+    color: #FBBC05;
+}
+.logo .e {
+    color: #34A853;
+}
+.logo .n {
+    color: #EA4335;
+}
+.logo .d {
+    color: #4285F4;
+}
+.logo .x {
+    color: #FBBC05;
+}
+
+/* Search bar and button styling */
+.search-section {
+    margin: 20px 0;
+}
+
+#searchBook, #searchAuthor {
+    width: 30%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    outline: none;
+    margin-right: 10px;
+}
+
+#searchBar:focus {
+    border-color: #4285f4;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 24px;
+    background-color: #4285f4;
+    color: white;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #357ae8;
+}
+
+.options {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.options label {
+    font-size: 16px;
+}
+
+.results-section {
+    text-align: left;
+    padding-top: 200px;
+}
+
+#results {
+    max-height: 80vh;
+    padding-top: 20px;
+}
+
+.result-item {
+    margin-bottom: 15px;
+}
+
+.result-title {
+    font-size: 18px;
+    color: #1a0dab;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.result-author {
+    font-size: 14px;
+    color: #006621;
+    margin-bottom: 4px;
+}
+
+.result-subjects {
+    font-size: 12px;
+    color: #545454;
+}
