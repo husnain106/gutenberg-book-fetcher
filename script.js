@@ -196,7 +196,7 @@ This function generates a url to the page where the details of books are shown w
 */
 function book_detail(id){
     //this is the current url to the root directory
-    const currentUrl = 'file:///C:/Users/Offic/OneDrive/Documents/Job%20Applications/MadLab_Assessment/gutenberg-book-fetcher';
+    const currentUrl = 'https://husnain106.github.io/gutenberg-book-fetcher/';
     
     //using the root directory url, generate the url for this specific book id
     const url = `${currentUrl}/book.html?id=${id}`;
