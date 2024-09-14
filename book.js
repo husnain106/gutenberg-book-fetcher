@@ -51,29 +51,43 @@ function output_information(book){
     book_detail.innerHTML = '';
     
     const information = document.createElement('div');
+    information.className = 'book-info';  // Adding a class
+
     
     const bookTitle = document.createElement('h1');
     bookTitle.textContent = `Title: ${book.title}`;
+    bookTitle.className = 'book-title';  // Adding a class
+
 
     const bookAuthor = document.createElement('h2');
     const all_authors = book.authors.map(author => author.name).join(', ');
     bookAuthor.textContent = `Author: ${all_authors}`;
+    bookAuthor.className = 'book-author';  // Adding a class
+
 
     const bookSubjects = document.createElement('p');
     const all_subjects = book.subjects.join(',');
     bookSubjects.textContent = `Subjects: ${all_subjects}`;
+    bookSubjects.className = 'book-subjects';  // Adding a class
+
 
     const bookTransaltors = document.createElement('p');
     const all_transaltors = book.translators.join(',');
     bookTransaltors.textContent = `Translators: ${all_transaltors}`;
+    bookTransaltors.className = 'book-translators';  // Adding a class
+
 
     const bookLanguages = document.createElement('p');
     const all_languages = book.languages.join(',');
     bookLanguages.textContent = `Languages: ${all_languages}`;
+    bookLanguages.className = 'book-languages';  // Adding a class
+
 
     const bookBookshelves = document.createElement('p');
     const all_shelves = book.bookshelves.join(',');
     bookBookshelves.textContent = `Bookshelves: ${all_shelves}`;
+    bookBookshelves.className = 'book-bookshelves';  // Adding a class
+
 
     const bookCopyright = document.createElement('p');
     if (book.copyright){
@@ -81,11 +95,16 @@ function output_information(book){
     }else{
         bookCopyright.textContent = `Copyright: No`;
     }
+    bookCopyright.className = 'book-copyright';  // Adding a class
+
 
     const bookMediaType = document.createElement('p');
     bookMediaType.textContent = `Media Type: ${book.media_type}`;
+    bookMediaType.className = 'book-media-type';  // Adding a class
+
 
     const bookFormats = document.createElement('div');
+    bookFormats.className = 'book-formats';  // Adding a class
     const formatsArray = Object.entries(book.formats).map(([key, value]) => `${key}: ${value}`);
     bookFormats.textContent = `Formats: `;
     for (let format of formatsArray){
@@ -96,6 +115,9 @@ function output_information(book){
 
     const bookDownload = document.createElement('p');
     bookDownload.textContent = `Download Couunt: ${book.download_count}`;
+    bookDownload.className = 'book-download';  // Adding a class
+
+
 
     information.appendChild(bookTitle);
     information.appendChild(bookAuthor);
