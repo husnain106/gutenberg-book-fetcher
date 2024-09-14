@@ -1,3 +1,11 @@
+
+/*
+Asynchronous function to fetch the data from the API.
+***Parameters required:
+    - url : the target url for the GET request.
+***Output:
+    - data : array of books fetched from the url.
+*/
 async function fetchBook(url) {
 
     //Use a try catch block to catch any errors.
@@ -35,6 +43,11 @@ async function fetchBook(url) {
     }
 }
 
+/*
+This function uses the url of the webpage to extract the book id from the url
+***Output:
+    - bookID : the id of the book that has been extracted from the url
+*/
 function get_if_from_url(){
     // Get the query parameters from the current URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -44,6 +57,12 @@ function get_if_from_url(){
 
     return bookId;
 }
+
+/*
+This function displays various information about a book
+***Parameter:
+    - book : the book that needs its details to be outputted onto the webpage
+*/
 
 function output_information(book){
     console.log(book);
@@ -135,11 +154,21 @@ function output_information(book){
 
 }
 
+
+/*
+Main function that calls the other functions in a linear and logical sense
+*/
 async function main(){
+
+    //extract the book id from the url
     const bookId = get_if_from_url();
     const url = 'https://gutendex.com/books/';
+
+    //fetch the details about the book from its id
     const book = await fetchBook(`${url}${bookId}`);
+    //output the details about a book
     output_information(book);
 }
 
+//call the main function
 main();
