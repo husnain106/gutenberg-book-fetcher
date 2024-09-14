@@ -142,3 +142,81 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Book info styles */
+.book-info {
+    margin-top: 20px;
+}
+
+.book-title {
+    font-size: 1.8rem;
+    color: #1a73e8;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.book-subjects, .book-translators, .book-languages, .book-bookshelves, .book-copyright, .book-media-type, .book-download {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #666;
+}
+
+/* Formats section */
+.book-formats {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-left: 4px solid #1a73e8;
+}
+
+.book-formats p {
+    font-size: 0.95rem;
+    margin: 4px 0;
+}
+
+/* Make links for book formats stand out */
+.book-formats a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.book-formats a:hover {
+    text-decoration: underline;
+}
+
+/* Download count style */
+.book-download {
+    font-weight: bold;
+}

@@ -164,10 +164,10 @@ function displayBooks(books) {
         const resultItem = document.createElement('div');
         resultItem.classList.add('result-item');
 
-        //add a google like link for the book which opens the book in a new page
-        //currently this page goes to the gutendex page with books details
+        //add a google like link for the book which opens the book in a new page by calling the function book_detail(${book.id})
         const titleLink = document.createElement('a');
-        titleLink.href = `https://gutendex.com/books/${book.id}/`;
+        titleLink.setAttribute('onclick', `book_detail(${book.id})`);
+        titleLink.href = `javascript:void(0)`;
         titleLink.classList.add('result-title');
         titleLink.textContent = book.title;
 
@@ -189,6 +189,20 @@ function displayBooks(books) {
     };
 }
 
+/*
+This function generates a url to the page where the details of books are shown with the id as a parameter in the url
+***Parameters:
+    - id : the id of the book that user wants more details on
+*/
+function book_detail(id){
+    //this is the current url to the root directory
+    const currentUrl = 'file:///C:/Users/Offic/OneDrive/Documents/Job%20Applications/MadLab_Assessment/gutenberg-book-fetcher';
+    
+    //using the root directory url, generate the url for this specific book id
+    const url = `${currentUrl}/book.html?id=${id}`;
+    //open the page with the details about the book in a new tab
+    window.open(url, '_blank');
+}
 
 /*
 This asynchronous function is called when the search button is pressed from the index.html page.
