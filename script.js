@@ -199,7 +199,7 @@ function book_detail(id){
     const currentUrl = 'https://husnain106.github.io/gutenberg-book-fetcher/';
     
     //using the root directory url, generate the url for this specific book id
-    const url = `${currentUrl}/book.html?id=${id}`;
+    const url = `${currentUrl}book?id=${id}`;
     //open the page with the details about the book in a new tab
     window.open(url, '_blank');
 }
