@@ -44,26 +44,9 @@ The **Gutenberg Book Fetcher** is a web application that allows users to search 
 - A modern web browser (e.g., Chrome, Firefox, Safari).
 - No backend is required since this is a client-side JavaScript application.
 
-#### **How to Run the Project Locally**
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/gutenberg-book-fetcher.git
-   ```
-
-2. **Navigate to the project folder:**
-   ```bash
-   cd gutenberg-book-fetcher
-   ```
-
-3. **Open `index.html` in a browser:**
-   - You can simply double-click `index.html` or drag and drop it into your browser.
-   - Alternatively, you can serve it using a local server like [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VSCode.
 
 #### **How to Run the Project Remotely**
-
-1. **Link**
-  - You can simply follow this [link](https://husnain106.github.io/gutenberg-book-fetcher/): 
+- You can simply follow this [link](https://husnain106.github.io/gutenberg-book-fetcher/): 
 
 ---
 
