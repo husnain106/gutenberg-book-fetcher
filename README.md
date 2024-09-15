@@ -55,6 +55,7 @@ The **Gutenberg Book Fetcher** is a web application that allows users to search 
 1. **Search for Books:**
    - On the main page (`index.html`), enter a keyword in the search bar to find books related to the keyword.
    - Click on the "Search" button to initiate the search.
+   - Or on the contrary, starting a search whilst leaving the search bar blank will fetch all the books.
 
 2. **View Book Details:**
    - After the search, a list of books will be displayed.
